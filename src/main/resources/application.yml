@@ -16,17 +16,16 @@ spring:
     show-sql: true
   profiles:
     active:
-      - "qa"
-  cloud:
-    config:
-      enabled: false
-build:
-  version: "3.0"
-
-cards:
-  message: "Welcome to mrxbank cards related local APIs "
-  contactDetails:
-    name: "Muthuraja - Product Owner"
-    email: "rajamuthu107@gmail.com"
-  onCallSupport:
-    - (91) 6369366095
+      - "prod"
+  config:
+    import: "optional:configserver:http://localhost:8071/"
+  rabbitmq:
+    host: "localhost"
+    port: 5672
+    username: "guest"
+    password: "guest"
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
